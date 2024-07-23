@@ -8,7 +8,7 @@ const router = express.Router();
 
 const upload = multer({
     dest: path.resolve(__dirname, '../../public/data/upload'),
-    limits: { fileSize: 3e7 }
+    limits: { fileSize: 10485760 }  // 10mb
 })
 
 router.post('/', upload.fields([
