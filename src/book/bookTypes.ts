@@ -4,7 +4,7 @@ export interface IBook {
     _id: string,
     title: string,
     author: IUser,
-    genere: string,
+    genre: string,
     coverImage: string,
     file: string,
     createdAt: Date,
