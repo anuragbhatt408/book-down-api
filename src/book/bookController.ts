@@ -41,7 +41,6 @@ const createBook = async (req: Request, res: Response, next: NextFunction) => {
                 coverImage: uploadedResult.secure_url,
                 file: bookFileUploadResult.secure_url,
             })
-
         } catch (error) {
             return next(createHttpError(502, 'Error While Saving The Data in DB'))
         }
