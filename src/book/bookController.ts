@@ -4,6 +4,7 @@ import path from "node:path";
 import fs from 'node:fs';
 import createHttpError from "http-errors";
 import bookModal from "./bookModal";
+import { AuthRequest } from "../middlewares/authenticate";
 
 const createBook = async (req: Request, res: Response, next: NextFunction) => {
 
@@ -33,9 +34,10 @@ const createBook = async (req: Request, res: Response, next: NextFunction) => {
         console.log('uploadedResult pdfs', bookFileUploadResult);
 
         let newBook;
+        const _req = req as AuthRequest;
         try {
             newBook = await bookModal.create({
-                author: '669e8d2a6661f25985db6c16',
+                author: _req.userId,
                 title,
                 genre,
                 coverImage: uploadedResult.secure_url,
